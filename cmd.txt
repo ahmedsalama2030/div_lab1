@@ -1,0 +1,16 @@
+1- docker build -t nginx-custom . 
+2- docker tag nginx-custom asalama123/nginx-custom:v1.0 
+3- docker push asalama123/nginx-custom:v1.0 
+4- docker run -d -p 9085:80 --name my-nginx nginx-custom
+5- link image hub  =docker pull asalama123/nginx-custom:v1.0
+
+6- docker stop my-nginx
+7-docker rm my-nginx
+9-  docker build -t nginx-custom . 
+
+
+network 
+docker network create n1
+docker network create n2
+docker run -d --name nginx1 --network n1 nginx-custom
+docker run -d --name nginx2 --network n1 nginx-custom
