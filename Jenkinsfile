@@ -11,19 +11,15 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                script {
-                    // Build the Docker image
-                    docker.build("my-nginx-image:latest", ".")
-                }
+                // Run Docker build command in the shell
+                sh 'docker build -t my-nginx-image:latest .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                script {
-                    // Run the Docker container
-                    docker.image('my-nginx-image:latest').run('-p 8080:80')
-                }
+                // Run Docker container in the shell
+                sh 'docker run -d -p 8080:80 my-nginx-image:latest'
             }
         }
     }
